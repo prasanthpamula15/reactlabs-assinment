@@ -7,6 +7,10 @@ import "./style.css";
 
 
 function App() {
+  const stratTime = Date.now() / 1000; 
+  const endTime = stratTime + 243248; 
+
+  const remainingTime = endTime - stratTime;
 
   var renderTime = ({ remainingTime }) => {
     if (remainingTime === 0||remainingTime<0) {
@@ -82,6 +86,7 @@ function App() {
           isPlaying
           duration={actual}
           colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          initialRemainingTime={remainingTime % 60}
           onComplete={()=> ({shouldRepeat:true,delay:1})}
         >
           {renderTime}
